@@ -1,4 +1,4 @@
-from backend.llm_client import ask_flash
+from backend.llm_client import ask_mini
 
 class ExtractionAgentNode:
     """Extraction agent node - extracts key information from papers"""
@@ -31,7 +31,7 @@ Provide:
 
 Be concise and structured.
 """
-            extraction = ask_flash(prompt)
+            extraction = ask_mini(prompt)
             extracted.append({
                 'paper_id': paper['entry_id'],
                 'title': paper['title'],

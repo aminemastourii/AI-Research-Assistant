@@ -1,4 +1,4 @@
-from backend.llm_client import ask_flash
+from backend.llm_client import ask_mini
 
 class AnalysisAgentNode:
     """Analysis agent node - performs deep analysis of extracted information"""
@@ -34,7 +34,7 @@ Provide:
 
 Be analytical and constructive.
 """
-            analysis = ask_flash(prompt)
+            analysis = ask_mini(prompt)
             analyses.append({
                 'paper_id': item['paper_id'],
                 'title': item['title'],

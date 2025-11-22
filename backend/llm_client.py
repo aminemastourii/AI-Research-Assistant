@@ -1,26 +1,26 @@
 import os
 from dotenv import load_dotenv
-from langchain_google_genai import ChatGoogleGenerativeAI
+from langchain_openai import ChatOpenAI
 from langchain_core.prompts import PromptTemplate
 
 load_dotenv()
 
-# Initialize LangChain LLM with Gemini
-llm_flash = ChatGoogleGenerativeAI(
-    model="models/gemini-2.5-flash",
-    google_api_key=os.getenv("GEMINI_API_KEY"),
+# Initialize LangChain LLM with OpenAI
+llm_mini = ChatOpenAI(
+    model="gpt-4o-mini",
+    openai_api_key=os.getenv("OPENAI_API_KEY"),
     temperature=0.7
 )
 
-llm_pro = ChatGoogleGenerativeAI(
-    model="models/gemini-2.5-pro",
-    google_api_key=os.getenv("GEMINI_API_KEY"),
+llm_standard = ChatOpenAI(
+    model="gpt-4o",
+    openai_api_key=os.getenv("OPENAI_API_KEY"),
     temperature=0.7
 )
 
-def ask_flash(prompt: str) -> str:
+def ask_mini(prompt: str) -> str:
     """
-    Simple query using Gemini Flash model via LangChain.
+    Simple query using GPT-4o-mini model via LangChain.
     
     Args:
         prompt: User prompt/question
@@ -28,12 +28,12 @@ def ask_flash(prompt: str) -> str:
     Returns:
         LLM response
     """
-    response = llm_flash.invoke(prompt)
+    response = llm_mini.invoke(prompt)
     return response.content
 
-def ask_pro(prompt: str) -> str:
+def ask_standard(prompt: str) -> str:
     """
-    Simple query using Gemini Pro model via LangChain.
+    Simple query using GPT-4o model via LangChain.
     
     Args:
         prompt: User prompt/question
@@ -41,7 +41,7 @@ def ask_pro(prompt: str) -> str:
     Returns:
         LLM response
     """
-    response = llm_pro.invoke(prompt)
+    response = llm_standard.invoke(prompt)
     return response.content
 
 def create_chain(template: str, llm=None):
@@ -56,11 +56,11 @@ def create_chain(template: str, llm=None):
         Runnable chain
     """
     if llm is None:
-        llm = llm_flash
+        llm = llm_mini
     
     prompt = PromptTemplate.from_template(template)
     chain = prompt | llm
     return chain
 
 # Export LLM instances for direct use
-__all__ = ['llm_flash', 'llm_pro', 'ask_flash', 'ask_pro', 'create_chain']
+__all__ = ['llm_mini', 'llm_standard', 'ask_mini', 'ask_standard', 'create_chain']

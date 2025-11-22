@@ -1,7 +1,7 @@
 import os
 from typing import List, Dict, Optional
 from langchain_community.vectorstores import FAISS
-from langchain_google_genai import GoogleGenerativeAIEmbeddings
+from langchain_openai import OpenAIEmbeddings
 from langchain_core.documents import Document
 from dotenv import load_dotenv
 
@@ -19,9 +19,9 @@ class VectorStoreFAISS:
         Args:
             index_path: Path to save/load FAISS index
         """
-        self.embeddings = GoogleGenerativeAIEmbeddings(
-            model="models/embedding-001",
-            google_api_key=os.getenv("GEMINI_API_KEY")
+        self.embeddings = OpenAIEmbeddings(
+            model="text-embedding-3-small",
+            openai_api_key=os.getenv("OPENAI_API_KEY")
         )
         self.index_path = index_path or "backend/memory/faiss_index"
         self.vector_store = None

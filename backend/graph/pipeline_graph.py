@@ -4,7 +4,7 @@ from backend.agents.search_agent import SearchAgentNode
 from backend.agents.extraction_agent import ExtractionAgentNode
 from backend.agents.analysis_agent import AnalysisAgentNode
 from backend.memory.vector_store import VectorStoreFAISS
-from backend.llm_client import ask_pro
+from backend.llm_client import ask_standard
 
 # Define the state that flows through the pipeline
 class PipelineState(TypedDict):
@@ -43,7 +43,7 @@ def memory_node(state: PipelineState, vector_store: VectorStoreFAISS) -> Pipelin
 def report_node(state: PipelineState) -> PipelineState:
     """Generate final literature review"""
     combined = "\n\n".join([a['analysis'] for a in state["analyses"]])
-    final_report = ask_pro(f"Produce a final literature review:\n{combined}")
+    final_report = ask_standard(f"Produce a final literature review:\n{combined}")
     return {"final_report": final_report}
 
 def create_pipeline(vector_store: VectorStoreFAISS):
