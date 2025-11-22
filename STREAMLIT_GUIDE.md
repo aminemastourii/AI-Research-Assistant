@@ -16,7 +16,7 @@ The app will open in your browser at `http://localhost:8502`
 
 ### 🔍 Research Tab
 - **Query Input**: Enter your research question or topic
-- **Model Selection**: Choose between Gemini 2.5 Flash or Pro
+- **Model Selection**: Choose between GPT-4o-mini or GPT-4o
 - **Max Papers**: Control how many papers to analyze (1-10)
 - **Example Queries**: Click to try pre-configured research topics:
   - Quantum computing and cryptography
@@ -39,8 +39,8 @@ The app will open in your browser at `http://localhost:8502`
 ## Sidebar
 
 ### Settings
-- **GEMINI_API_KEY**: Enter your Google Gemini API key
-- **Model Selection**: Choose between Flash (faster) or Pro (better quality)
+- **OPENAI_API_KEY**: Enter your OpenAI API key
+- **Model Selection**: Choose between GPT-4o-mini (faster) or GPT-4o (better quality)
 - **Max Papers**: Adjust result count
 
 ### Search History
@@ -52,7 +52,7 @@ The app will open in your browser at `http://localhost:8502`
 1. **Enter API Key** in sidebar settings
 2. **Type Research Query** in Research tab
 3. **Configure Settings** (optional):
-   - Select model (Flash recommended for speed)
+   - Select model (GPT-4o-mini recommended for speed)
    - Set max papers (3-5 recommended)
 4. **Click "Start Research"**
 5. **Monitor Progress**:
@@ -68,8 +68,8 @@ The app will open in your browser at `http://localhost:8502`
 ## Tips
 
 ### Performance
-- **Gemini 2.5 Flash**: Faster, good for most tasks
-- **Gemini 2.5 Pro**: Higher quality, slower
+- **GPT-4o-mini**: Faster, cost-effective, good for most tasks
+- **GPT-4o**: Higher quality, slower, more expensive
 - **Max Papers 3-5**: Good balance of depth vs. speed
 - **Max Papers 1-2**: Quick overviews
 - **Max Papers 8-10**: Comprehensive research (slower)
@@ -99,9 +99,9 @@ streamlit run app.py --server.port 8080
 ```
 
 **API errors?**
-- Verify GEMINI_API_KEY is correct
+- Verify OPENAI_API_KEY is correct
 - Check internet connection
-- Ensure Gemini API is enabled in Google Cloud
+- Ensure you have API credits available
 
 ## Architecture
 

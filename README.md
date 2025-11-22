@@ -4,7 +4,7 @@ An intelligent research assistant that automatically searches, analyzes, and syn
 
 ## Overview
 
-This system uses a multi-stage AI pipeline to transform research queries into comprehensive literature reviews. It searches academic databases, extracts key information, performs critical analysis, and generates synthesis reports—all powered by Google's Gemini AI and LangGraph workflow orchestration.
+This system uses a multi-stage AI pipeline to transform research queries into comprehensive literature reviews. It searches academic databases, extracts key information, performs critical analysis, and generates synthesis reports—all powered by OpenAI's GPT models and LangGraph workflow orchestration.
 
 ## Features
 
@@ -16,8 +16,8 @@ This system uses a multi-stage AI pipeline to transform research queries into co
 - Automated literature review generation
 
 🤖 **AI-Powered Intelligence**
-- Google Gemini 2.5 Flash for fast processing
-- Google Gemini 2.5 Pro for high-quality synthesis
+- GPT-4o-mini for fast processing (extraction & analysis)
+- GPT-4o for high-quality synthesis (final reports)
 - Semantic embeddings for intelligent paper matching
 
 📊 **Advanced Capabilities**
@@ -78,11 +78,11 @@ Final Literature Review
 
 | Component | Technology | Purpose |
 |-----------|-----------|---------|
-| **LLM** | Google Gemini 2.5 | AI reasoning and generation |
+| **LLM** | OpenAI GPT-4o/GPT-4o-mini | AI reasoning and generation |
 | **Workflow** | LangGraph | State management and orchestration |
 | **LLM Framework** | LangChain | LLM integration and tooling |
 | **Vector DB** | FAISS | Semantic search and storage |
-| **Embeddings** | Google Generative AI | Text vectorization |
+| **Embeddings** | OpenAI text-embedding-3-small | Text vectorization |
 | **Paper Search** | arXiv API | Academic paper retrieval |
 
 ### Project Structure
@@ -91,7 +91,7 @@ Final Literature Review
 AI-Research-Assistant/
 │
 ├── backend/
-│   ├── llm_client.py              # LangChain + Gemini integration
+│   ├── llm_client.py              # LangChain + OpenAI integration
 │   ├── main.py                    # CLI entry point
 │   │
 │   ├── agents/                    # Processing agents
@@ -143,7 +143,7 @@ pip install -r requirements.txt
 Create a `.env` file in the root directory:
 
 ```env
-GEMINI_API_KEY=your_gemini_api_key_here
+OPENAI_API_KEY=your_openai_api_key_here
 ```
 
 Get your API key from: https://makersuite.google.com/app/apikey
@@ -311,7 +311,7 @@ Executes the full research workflow and returns final state.
 
 | Variable | Description | Required |
 |----------|-------------|----------|
-| `GEMINI_API_KEY` | Google Gemini API key | Yes |
+| `OPENAI_API_KEY` | OpenAI API key | Yes |
 
 ### Pipeline Settings
 
@@ -373,7 +373,7 @@ Try broader search terms or different keywords.
 
 Core dependencies:
 - `langchain>=0.1.0` - LLM framework
-- `langchain-google-genai>=0.0.5` - Gemini integration
+- `langchain-openai>=0.0.5` - OpenAI integration
 - `langgraph>=0.0.20` - Workflow orchestration
 - `faiss-cpu>=1.7.4` - Vector search
 - `arxiv>=2.1.0` - Paper search
@@ -414,6 +414,6 @@ Contributions welcome! Areas for improvement:
 
 Built with:
 - LangChain & LangGraph by LangChain Inc.
-- Google Gemini API
+- OpenAI API key
 - FAISS by Meta AI Research
 - arXiv API
